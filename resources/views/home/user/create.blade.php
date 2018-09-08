@@ -37,7 +37,7 @@
                 <!-- Account -->
                 <div class="form-group">
                     <label>Account</label>
-                    <input type="text" name="account" class="form-control" placeholder="name@address.com/phone">
+                    <input type="text" name="account" class="form-control" value="13067300136" placeholder="name@address.com/phone">
                 </div>
                 {{--验证码--}}
                 <div class="input-group mb-3">
@@ -111,7 +111,7 @@
             //后台链接
             url: '{{route ('code.send')}}',
             //验证码等待发送时间
-            timeout: 5,
+            timeout: 60,
             //表单，手机号或邮箱的INPUT表单
             input: '[name="account"]'
         };
