@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
         $user           = \App\User::find(1);
         $user->name     = 'William';
         $user->email    = 'hwjmsn@hotmail.com';
-        $user->phone     = '13067300136';
+        $user->mobile     = '13067300136';
         $user->password = bcrypt('123');
         $user->is_admin = true;
         $user->save();
@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
         $user           = \App\User::find(2);
         $user->name     = '第二';
         $user->email    = 'william@isme.co.nz';
-        $user->phone     = '13067300137';
+        $user->mobile     = '13067300137';
         $user->password = bcrypt('123');
         $user->save();
     

@@ -8,7 +8,7 @@
         </button>
 
         <!-- Brand -->
-        <a class="navbar-brand mr-auto" href="index.html">
+        <a class="navbar-brand mr-auto" href="{{route('index')}}">
             <img src="{{asset('org/Dashkit/dist/assets')}}/img/logo.svg" alt="..." class="navbar-brand-img">
         </a>
 
@@ -307,30 +307,33 @@
                 </div> <!-- / .dropdown-menu -->
 
             </div>
+
             <!-- Dropdown -->
             <div class="dropdown">
-
             @auth()
-            <!-- Toggle -->
-                <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{asset ('org/Dashkit-1.1.2')}}/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                </a>
 
-                <!-- Menu -->
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="profile-posts.html" class="dropdown-item">Profile</a>
-                    <a href="settings.html" class="dropdown-item">Settings</a>
-                    <hr class="dropdown-divider">
-                    <a href="sign-in.html" class="dropdown-item">Logout</a>
-                </div>
+                <!-- Toggle -->
+                    <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <img src="{{asset ('org/Dashkit')}}/dist/assets/img/avatars/profiles/avatar-1.jpg" alt="..."
+                             class="avatar-img rounded-circle">
+                    </a>
+
+                    <!-- Menu -->
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="profile-posts.html" class="dropdown-item">{{auth()->user()->name}}</a>
+                        <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
+                        <hr class="dropdown-divider">
+                        <a href="{{route('logout')}}" class="dropdown-item">Logout</a>
+                    </div>
                 @else
-                <a href="{{route ('login')}}" class="btn btn-sm btn-primary">
-                <span class="fe fe-home mr-1"></span>登录
-                </a>
-                <a href="{{route ('user.create')}}" class="btn btn-success btn-sm">
-                注册
-                </a>
-                @endauth
+                    <a href="{{route ('login')}}" class="btn btn-sm btn-primary">
+                        <span class="fe fe-home mr-1"></span>登录
+                    </a>
+                    <a href="{{route ('user.create')}}" class="btn btn-success btn-sm">
+                        注册
+                    </a>
+            @endauth
 
             </div>
 
@@ -342,7 +345,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('index')}}">
                         Dashboard
                     </a>
                 </li>

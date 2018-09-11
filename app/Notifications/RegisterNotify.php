@@ -9,8 +9,10 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 class RegisterNotify extends Notification
 {
+    
     use Queueable;
-	protected $code;
+    protected $code;
+    
     /**
      * Create a new notification instance.
      *
@@ -20,35 +22,38 @@ class RegisterNotify extends Notification
     {
         $this->code = $code;
     }
-
+    
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
+     *
      * @return array
      */
     public function via($notifiable)
     {
         return ['mail'];
     }
-
+    
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         return (new MailMessage())
-			->subject('c96CMS注册')//主题
-            ->line('尊敬的用户您好，验证码为：'.$this->code.'，您正在注册成为平台会员，感谢您的支持！');
+            ->subject('Corplay小屋的注册码')//主题
+            ->line('尊敬的用户您好，验证码为：'.$this->code.'，使用此通过令牌~~，May the force be with you ！');
     }
-
+    
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
+     *
      * @return array
      */
     public function toArray($notifiable)

@@ -22,12 +22,10 @@
 <!-- TOPNAV
 ================================================== -->
 @include('layout.home.head')
-
 <!-- MAIN CONTENT
 ================================================== -->
 <div class="container">
     @yield('content')
-
 </div> <!-- / .main-content -->
 
 <!-- JAVASCRIPT

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Http\Requests\UserRequest;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -34,9 +36,27 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        //打印测试post提交的所有数据
+        //dd($request->all ());
+        if(filter_var ($request->account,FILTER_VALIDATE_EMAIL)){
+            $data['email'] = $request->account;
+            $data['email_valid'] = true;
+        }else{
+            $data['mobile'] = $request->account;
+            $data['mobile_valid'] = true;
+        }
+        $data['name'] = $request->name;
+        $data['password'] = bcrypt ($request->password);
+        //dd($data);
+        //批量填充数据
+        //需要User模型中fillable（允许填充）属性，或者$guarded（不允许被填充）
+        $res = User::create ($data);
+        //dd($res);
+        //session()->flash('success','注册成功');
+        //return redirect('/')
+        return redirect (route ('login'))->with ('success','注册成功');
     }
 
     /**

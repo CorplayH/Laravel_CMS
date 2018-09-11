@@ -5,18 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Libs CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/fonts/feather/feather.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/libs/highlight/styles/vs2015.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/libs/quill/dist/quill.core.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
-
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/css/theme.min.css">
-
-    <title>Dashkit</title>
+    <title>Sign in</title>
 </head>
 <body class="d-flex align-items-center bg-white border-top-2 border-primary">
 
@@ -33,12 +31,12 @@
 
             <!-- Subheading -->
             <p class="text-muted text-center mb-5">
-                Free access to our dashboard.
+                人是生而自由的
             </p>
 
             <!-- Form -->
-            <form>
-
+            <form action="{{route('login')}}" method="post">
+                @csrf
                 <!-- Email address -->
                 <div class="form-group">
 
@@ -46,7 +44,7 @@
                     <label>Account</label>
 
                     <!-- Input -->
-                    <input type="text" class="form-control" placeholder="name@address.com / Phone number">
+                    <input type="text" value="{{old('account')}}" name="account" class="form-control" placeholder="name@address.com / Phone number">
 
                 </div>
 
@@ -74,7 +72,7 @@
                     <div class="input-group input-group-merge">
 
                         <!-- Input -->
-                        <input type="password" class="form-control form-control-appended" placeholder="Enter your password">
+                        <input type="password" name="password" class="form-control form-control-appended" placeholder="Enter your password">
 
                         <!-- Icon -->
                         <div class="input-group-append">
@@ -112,22 +110,8 @@
 
 <!-- JAVASCRIPT
 ================================================== -->
-
-<!-- Libs JS -->
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/jquery/dist/jquery.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/chart.js/dist/Chart.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/chart.js/Chart.extension.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/highlight/highlight.pack.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/flatpickr/dist/flatpickr.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/list.js/dist/list.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/quill/dist/quill.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/dropzone/dist/min/dropzone.min.js"></script>
-<script src="{{asset('org/Dashkit/dist/assets')}}/libs/select2/dist/js/select2.min.js"></script>
-
-<!-- Theme JS -->
-<script src="{{asset('org/Dashkit/dist/assets')}}/js/theme.min.js"></script>
+@include('layout.hdjs')
+@include('layout.message')
 
 </body>
 </html>

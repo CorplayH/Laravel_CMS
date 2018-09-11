@@ -29,15 +29,16 @@
             <!-- Subheading -->
             <p class="text-muted text-center mb-5"></p>
             <!-- Form -->
-            <form>
+            <form action="{{route('user.store')}}" method="post">
+                @csrf
                 <div class="form-group">
                     <label>昵称</label>
-                    <input type="text" name="name" class="form-control" placeholder="外卖可乐仔">
+                    <input type="text" name="name" class="form-control" placeholder="外卖可乐仔" value="{{old ('name')}}">
                 </div>
                 <!-- Account -->
                 <div class="form-group">
                     <label>Account</label>
-                    <input type="text" name="account" class="form-control" value="13067300136" placeholder="name@address.com/phone">
+                    <input type="text" name="account" class="form-control" value="{{old ('account')}}" placeholder="name@address.com/phone">
                 </div>
                 {{--验证码--}}
                 <div class="input-group mb-3">
@@ -90,11 +91,9 @@
 
         </div>
         <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
-
             <!-- Image -->
             <div class="bg-cover vh-100 mt--1 mr--3"
                  style="background-image: url({{asset('org/Dashkit/dist/assets')}}/img/covers/auth-side-cover.jpg);"></div>
-
         </div>
     </div> <!-- / .row -->
 </div>
@@ -102,7 +101,9 @@
 <!-- JAVASCRIPT
 ================================================== -->
 
+
 @include('layout.hdjs')
+@include('layout.message')
 <script>
     require(['hdjs'], function (hdjs) {
         let option = {
@@ -111,7 +112,7 @@
             //后台链接
             url: '{{route ('code.send')}}',
             //验证码等待发送时间
-            timeout: 60,
+            timeout: 3,
             //表单，手机号或邮箱的INPUT表单
             input: '[name="account"]'
         };
