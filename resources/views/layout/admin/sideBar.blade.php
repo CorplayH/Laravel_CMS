@@ -62,11 +62,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false"
+                    <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="true"
                        aria-controls="sidebarPages">
                         <i class="fe fe-file"></i> 网站配置
                     </a>
-                    <div class="collapse " id="sidebarPages">
+                    <div class="collapse show" id="sidebarPages">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{route ('admin.config.edit',['name'=>'site'])}}" class="nav-link" role="button" aria-expanded="false"
@@ -81,34 +81,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#sidebarTeam" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false"
-                                   aria-controls="sidebarTeam">
-                                    Team
+                                <a href="{{route ('admin.config.edit',['name'=>'base'])}}" class="nav-link" >
+                                    站点配置
                                 </a>
-                                <div class="collapse " id="sidebarTeam">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="team-overview.html" class="nav-link ">
-                                                Overview
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="" class="nav-link ">
-                                                Projects
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="team-members.html" class="nav-link ">
-                                                Members
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="team-new.html" class="nav-link ">
-                                                New team <span class="badge badge-soft-success ml-auto">New</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route ('admin.config.edit',['name'=>'email'])}}" class="nav-link" >
+                                    邮件配置
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route ('admin.config.edit',['name'=>'upload'])}}" class="nav-link" >
+                                    上传配置
+                                </a>
                             </li>
                         </ul>
                     </div>

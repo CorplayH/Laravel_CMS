@@ -26,8 +26,9 @@
 ================================================== -->
 <div class="container">
     @yield('content')
-</div> <!-- / .main-content -->
 
+</div> <!-- / .main-content -->
+@include('layout.home.footer')
 <!-- JAVASCRIPT
 ================================================== -->
 {{--引入 hdjs--}}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="description" content={{cms_config('site.description')}}>
     <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Libs CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/fonts/feather/feather.min.css">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/css/theme.min.css">
-    <title>Dashboard</title>
+    <title>{{cms_config('site.title')}}</title>
 </head>
 <body>
 <!-- MODALS
@@ -694,9 +694,10 @@
 ================================================== -->
 <div class="main-content">
 @yield('content')
-
 </div> <!-- / .main-content -->
+<!-- Footer -->
 
+<!-- Footer -->
 <!-- JAVASCRIPT
 ================================================== -->
 {{--引入 hdjs--}}

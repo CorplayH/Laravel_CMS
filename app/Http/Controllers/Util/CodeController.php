@@ -40,7 +40,7 @@ class CodeController extends Controller
                 'vars'     => ["code" => $code],
             ];
             //发送手机验证码
-//            $res = Aliyun::instance('Sms')->send($data);
+            $res = Aliyun::instance('Sms')->send($data);
         }
         $this->saveToSession($code, $type, $request->username);
         return ['code' => 1, 'message' => '验证码发送成功'];

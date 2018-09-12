@@ -11,6 +11,7 @@ class Config extends Model
         'name','value'
     ];
     //手册搜索：$casts
+//    $casts 名字不能改, 把字段 value 以数组存入数据库
     protected  $casts = [
         'value'=>'array'
     ];

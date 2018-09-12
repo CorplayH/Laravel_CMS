@@ -1,11 +1,6 @@
 <?php
 
 
-
-
-
-
-
 //工具类路由
 Route::group (['namespace'=>'Util'],function (){
     Route::any('code/send', 'CodeController@send')->name ('code.send');
