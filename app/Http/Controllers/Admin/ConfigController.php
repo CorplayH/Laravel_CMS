@@ -31,5 +31,4 @@ class ConfigController extends Controller
         return back ()->with ('success','数据更新成功');
     }
     
-    
 }

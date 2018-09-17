@@ -125,10 +125,11 @@
 
                     <!-- Menu -->
                     <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-                        <a href="profile-posts.html" class="dropdown-item">Profile</a>
-                        <a href="settings.html" class="dropdown-item">Settings</a>
+                        <a href="{{route('member.index')}}" class="dropdown-item">{{auth()->user()->name}}</a>
+                        <a href="{{route('article.index')}}" class="dropdown-item">文章</a>
+                        <a href="{{route('index')}}" class="dropdown-item">{{cms_config('site.title')}}</a>
                         <hr class="dropdown-divider">
-                        <a href="sign-in.html" class="dropdown-item">Logout</a>
+                        <a href="{{route('logout')}}" class="dropdown-item">Logout</a>
                     </div>
 
                 </div>

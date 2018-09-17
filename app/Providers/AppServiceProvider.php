@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         $this->loadConfig();
 //      Config数据库 observe监测数据库改变 (使用ConfigObserver里的方法来监测)
         Config::observe(ConfigObserver::class);
+        \Carbon\Carbon::setLocale('zh');
     }
     protected function loadConfig(){
         Aliyun::config([

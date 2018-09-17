@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger ('email_valid')->default(0)->comment('是否邮箱验证，1是，0否');
             $table->tinyInteger ('mobile_valid')->default(0)->comment('是否手机验证，1是，0否');
             $table->tinyInteger ('is_admin')->default(0)->comment('是否为管理员，1是，0否');
+            $table->string ('icon')->default('')->comment('用户头像');
         });
     }
 

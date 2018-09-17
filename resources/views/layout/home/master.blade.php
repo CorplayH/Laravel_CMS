@@ -31,6 +31,7 @@
 @include('layout.home.footer')
 <!-- JAVASCRIPT
 ================================================== -->
+
 {{--引入 hdjs--}}
 @include('layout.hdjs')
 {{--引入message提示消息的组件，必须在hdjs之后--}}
@@ -39,6 +40,7 @@
     //加载bootstrap.js文件
     require(['bootstrap'])
 </script>
-
+@stack('js')
+@stack('css')
 </body>
 </html>

@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    public function __construct () {
+        //只有游客(未登录用户)可以访问create、store方法
+        $this->middleware('guest',[
+            'only'=>['create','store'],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +45,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         //打印测试post提交的所有数据
-        //dd($request->all ());
+//        dd($request->all ());
         if(filter_var ($request->account,FILTER_VALIDATE_EMAIL)){
             $data['email'] = $request->account;
             $data['email_valid'] = true;
@@ -103,4 +109,6 @@ class UserController extends Controller
     {
         //
     }
+    
+    
 }

@@ -315,13 +315,13 @@
                 <!-- Toggle -->
                     <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset ('org/Dashkit')}}/dist/assets/img/avatars/profiles/avatar-1.jpg" alt="..."
+                        <img src="{{auth()->user()->icon}}" alt="..."
                              class="avatar-img rounded-circle">
                     </a>
 
                     <!-- Menu -->
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="profile-posts.html" class="dropdown-item">{{auth()->user()->name}}</a>
+                        <a href="{{route('member.index')}}" class="dropdown-item">{{auth()->user()->name}}</a>
                         <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
                         <hr class="dropdown-divider">
                         <a href="{{route('logout')}}" class="dropdown-item">Logout</a>
@@ -346,7 +346,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('index')}}">
-                        Dashboard
+                        {{cms_config('site.title')}}
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -371,6 +371,11 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('article.index')}}">
+                        文章
+                    </a>
                 </li>
             </ul>
 

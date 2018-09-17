@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
+    public function __construct () {
+        //只有游客(未登录用户)除了logout不能访问，其余方法可以访问
+        $this->middleware('guest',[
+            'except'=>['logout'],
+        ]);
+    }
     //
     public function loginIndex(){
         
