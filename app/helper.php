@@ -29,3 +29,12 @@ function cms_config($name){
 //    dd($cache[$info[0]][$info[1]]);die;
     return $cache[$info[0]][$info[1]]??'';
 }
+
+function cms_model(){
+    $model = Request::query ('model');
+    $id = Request::query ('id');
+    //dump ($id);//dd($model);
+    $class = str_replace('-','\\',$model);
+    //dd($class);
+    return $class::find($id);
+}

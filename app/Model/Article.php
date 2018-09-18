@@ -22,5 +22,9 @@ class Article extends Model
         return $this->morphToMany (User::class,'zan');
     }
     
+    public function comment(){
+        return $this->morphMany (Comment::class,'comment');
+    }
+    
 }
 

@@ -39,6 +39,8 @@
                     @endforeach
                 </div>
             </div>
+            {{--加载模板时候，将mode传递过去--}}
+            @include('layout.common.comment',['model'=>$article])
         </div>
         <div class="col-sm-3">
             <div class="card">

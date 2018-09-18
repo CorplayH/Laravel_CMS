@@ -37,3 +37,8 @@ Route::group ( [ 'middleware' => ['auth'] , 'prefix' => 'member' , 'as' => 'memb
     Route::get ( '/follow/{user}' , 'UserController@toggleFollow' )->name ( 'toggleFollow' );
 } );
 
+
+//公共类
+Route::group (['middleware'=>[],'prefix'=>'common','as'=>'common.','namespace'=>'Common'],function (){
+    Route::resource ('comment','CommentController');
+});

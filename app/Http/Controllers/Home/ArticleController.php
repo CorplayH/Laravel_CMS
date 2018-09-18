@@ -67,7 +67,7 @@ class ArticleController extends Controller
         $isZan = $article->zan ()->get ()->contains ( auth ()->user () );
         //获得文章所有关注用户
         $users = $article->zan ()->get ();
-//        $fullcontent = $article->{'editormd-html-code'} ;
+        $fullcontent = $article->{'editormd-html-code'} ;
         return view ('home.article.show',compact ('isZan','users','article','fullcontent'));
     }
 
