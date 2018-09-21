@@ -1,4 +1,7 @@
 @extends('layout.member.master')
+@section('menu')
+    @include('layout.member.menu')
+@endsection
 @section('content')
     <div class="row justify-content-center">
         <div class="card col-sm-6">

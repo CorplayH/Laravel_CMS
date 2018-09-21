@@ -67,7 +67,7 @@ class ArticleController extends Controller
         $isZan = $article->zan ()->get ()->contains ( auth ()->user () );
         //获得文章所有关注用户
         $users = $article->zan ()->get ();
-        $fullcontent = $article->{'editormd-html-code'} ;
+//        $fullcontent = $article->{'editormd-html-code'} ;
         return view ('home.article.show',compact ('isZan','users','article','fullcontent'));
     }
 
@@ -79,7 +79,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        $this->authorize('update',$article);
+        return view('home.article.update',compact('article'));
     }
 
     /**
@@ -92,6 +93,9 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         //
+        $this->authorize('update',$article);
+        $article -> update($request->all());
+        return view('home.article.show',compact('article'));
     }
 
     /**
@@ -103,6 +107,9 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+        $this->authorize('delete',$article);
+        $article->delete();
+        return back()->with('success','删除成功');
     }
     public function toggleZan ( Article $article )
     {

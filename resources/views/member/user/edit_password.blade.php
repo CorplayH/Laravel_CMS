@@ -1,4 +1,7 @@
 @extends('layout.member.master')
+@section('menu')
+    @include('layout.member.menu')
+@endsection
 @section('content')
     <form action="{{route ('member.user.update',auth ()->user ())}}" method="post">
         @csrf @method('PUT')

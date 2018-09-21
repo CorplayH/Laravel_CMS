@@ -1,6 +1,4 @@
 <?php
-
-
 //工具类路由
 Route::group (['namespace'=>'Util'],function (){
     Route::any('code/send', 'CodeController@send')->name ('code.send');
@@ -18,7 +16,8 @@ Route::group(['middleware'=>[], 'namespace'=>'Home'],function(){
     Route::resource ('user','UserController');
     Route::get('/logout','LoginController@logout')->name('logout');
     Route::resource ('article','ArticleController');
-    Route::get ( '/article/zan/{article}' , 'ArticleController@toggleZan' )->name ( 'article.zan' );
+    Route::get ( '/article/zan/{article}' , 'ArticleController@toggleZan' )->name ( 'article.zan' );\
+    Route::resource('topic','TopicController');
 });
 
 /**
@@ -28,6 +27,7 @@ Route::group (['middleware'=>['auth.admin'],'prefix'=>'admin','as'=>'admin.','na
     Route::get ('/','HomeController@index')->name ('index');
     Route::get ('config/edit/{name}','ConfigController@edit')->name ('config.edit');
     Route::post ('config/update/{name}','ConfigController@store')->name ('config.store');
+    Route::resource('category','CategoryController');
 });
 
 //会员中心
@@ -35,10 +35,16 @@ Route::group ( [ 'middleware' => ['auth'] , 'prefix' => 'member' , 'as' => 'memb
     Route::get ( '/' , 'UserController@index' )->name ( 'index' );
     Route::resource ( 'user' , 'UserController' );
     Route::get ( '/follow/{user}' , 'UserController@toggleFollow' )->name ( 'toggleFollow' );
+    Route::resource ('notify','NotifyController');
+    Route::get ('/user/getFans/{user}','UserController@getFans')->name ('user.getFans');
+    Route::get ('/user/getFollower/{user}','UserController@getFollower')->name ('user.getFollower');
+    
 } );
 
 
 //公共类
 Route::group (['middleware'=>[],'prefix'=>'common','as'=>'common.','namespace'=>'Common'],function (){
     Route::resource ('comment','CommentController');
+    Route::get('/favorite/make','FavoriteController@make')->name('favorite.make');
+    Route::get('/zan/make','ZanController@make')->name('zan.make');
 });

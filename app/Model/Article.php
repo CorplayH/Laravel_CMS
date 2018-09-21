@@ -2,29 +2,44 @@
 
 namespace App\Model;
 
+use App\Model\Traits\common;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Article extends Model
 {
-    //
-    protected $fillable = ['title','content','editormd-html-code'];
+    use common;
+    use LogsActivity;
+    //设置记录动态的属性
+    protected static $logFillable = true;
+    //记录事件
+    protected static $recordEvents = ['created','updated'];
+    //自定义日志名称
+    protected static $logName = 'article';
+    
+    
+    protected $fillable = ['title','content'];
+//    protected $fillable = ['title','content','editormd-html-code'];
 //    protected $guarded =[];
-    //定义user模型关联
-    public function user(){
-        return $this->belongsTo (User::class);
-    }
+    
     /**
-     * 获得当前文章所有点赞用户
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     * 返回文章详情页链接
+     * @return string
      */
-    public function zan(){
-        return $this->morphToMany (User::class,'zan');
+    public function getLink($param){
+        return route ('article.show',$this) . $param;
+    }
+    //获取文章标题
+    public function getTitle()
+    {
+        return $this->title;
     }
     
-    public function comment(){
-        return $this->morphMany (Comment::class,'comment');
+    public function getMarkdownAttribute ()
+    {
+        $Parsedown = new \Parsedown();
+        return $Parsedown->text ( $this->content );
     }
-    
 }
 

@@ -3,13 +3,23 @@
 namespace App;
 
 use App\Model\Article;
+use App\Model\Topic;
 use App\Model\Attachment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable{
+        notify as protected systemNotify;
+    }
+    public function notify ( $instance )
+    {
+        //文章作者id不等于登入用户
+        if ( $this->id != auth ()->id () ) {
+            $this->systemNotify ( $instance );
+        }
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -69,5 +79,9 @@ class User extends Authenticatable
     public function article ()
     {
         return $this->hasMany ( Article::class );
+    }
+    public function topic ()
+    {
+        return $this->hasMany ( Topic::class );
     }
 }

@@ -49,10 +49,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-//        if(\Auth::check ()) {
-//            $followerTitle = $user->isFollower( \Auth::user()->id) ?'取消关注':'关注';
-//            return view('user.show', compact('user','followerTitle'));
-//        }
+        //
+        return view ('member.user.show',compact ('user'));
     }
 
     /**
@@ -124,5 +122,17 @@ class UserController extends Controller
     public function toggleFollow(User $user){
         auth ()->user ()->follower()->toggle([$user->id]);
         return back ()->with ('success','操作成功');
+    }
+    
+    //获取所有粉丝
+    public function getFans(User $user){
+        $fans = $user->fans ()->paginate(10);
+        return view ('member.user.getFans',compact ('user','fans'));
+    }
+    
+    //获取关注的人
+    public function getFollower(User $user){
+        $followers = $user->follower  ()->paginate(10);
+        return view ('member.user.getFollower',compact ('user','followers'));
     }
 }

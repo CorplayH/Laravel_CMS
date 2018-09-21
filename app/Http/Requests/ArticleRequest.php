@@ -25,6 +25,16 @@ class ArticleRequest extends FormRequest
     {
         return [
             //
+            'title'=>'required|max:60',
+            'content'=>'required'
+        ];
+    }
+    public function messages ()
+    {
+        return [
+            'title.required'=>'请输入文章标题',
+            'title.max'=>'文章标题不得超过60字符',
+            'content.required'=>'请输入文章内容',
         ];
     }
 }

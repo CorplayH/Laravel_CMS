@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Spatie\Activitylog\Models\Activity;
 
 class IndexController extends Controller
 {
@@ -12,10 +13,17 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return view('home.index.index');
+        $db = Activity::orderBy('id','desc');
+        if($request->query('t') == 'follower'){
+            $db->whereIn('causer_id',auth ()->user ()->follower->pluck('id'));
+            $activities = $db ->paginate(1)->withPath('?t=follower');
+        }else{
+            $activities = $db ->paginate(1);
+        }
+        return view('home.index.index',compact('activities'));
     }
 
     /**

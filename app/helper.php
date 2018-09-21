@@ -33,8 +33,11 @@ function cms_config($name){
 function cms_model(){
     $model = Request::query ('model');
     $id = Request::query ('id');
+    if(!strpos ($model,'-')){
+        $model = 'App-Model-' . $model;
+    }
     //dump ($id);//dd($model);
     $class = str_replace('-','\\',$model);
     //dd($class);
-    return $class::find($id);
+    return $id? $class::find($id) : new $class;
 }
