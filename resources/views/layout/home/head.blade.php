@@ -53,6 +53,11 @@
                         文章
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('lesson.index')}}">
+                        视频课程
+                    </a>
+                </li>
             </ul>
 
         </div>

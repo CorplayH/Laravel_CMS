@@ -80,6 +80,7 @@
 
                                         </p>
                                     </div>
+                                    @auth
                                     @if(Auth::user()->can('update',$article)|| Auth::user()->can('delete',$article))
                                         <div class="col-auto">
                                             <!-- Dropdown -->
@@ -103,7 +104,7 @@
                                         </div>
                                     @endif
                                 </div>
-
+@endauth
                             </li>
                         @endforeach
                     </ul>

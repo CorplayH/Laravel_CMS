@@ -1,9 +1,3 @@
-{{--@extends('layout.home.master')--}}
-{{--@section('content')--}}
-    {{--Home index--}}
-{{--@endsection--}}
-
-
 @extends('layout.home.master')
 @section('content')
     <div class="row">
@@ -36,9 +30,11 @@
                                     <a class="dropdown-item sort" data-sort="name" href="{{route ('index')}}">
                                         全部
                                     </a>
-                                    <a class="dropdown-item sort" data-sort="name" href="{{route ('index',['t'=>'follower'])}}">
-                                        关注
-                                    </a>
+                                    @auth()
+                                        <a class="dropdown-item sort" data-sort="name" href="{{route ('index',['t'=>'follower'])}}">
+                                            关注
+                                        </a>
+                                    @endauth
                                 </div>
 
                             </div>

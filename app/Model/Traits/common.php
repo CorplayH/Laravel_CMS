@@ -8,7 +8,6 @@
 
 namespace App\Model\Traits;
 
-
 use App\Model\Comment;
 use App\Model\Favorite;
 use App\Model\Zan;

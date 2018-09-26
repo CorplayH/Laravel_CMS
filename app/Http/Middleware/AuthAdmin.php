@@ -16,7 +16,7 @@ class AuthAdmin
     public function handle($request, Closure $next)
     {
         if ( ! \Auth::check () || auth ()->user ()->is_admin != 1 ) {
-            return redirect ( '/' );
+            return redirect ( '/loign' );
         }
         return $next( $request );
     }

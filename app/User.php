@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model\Article;
+use App\Model\Lesson;
 use App\Model\Topic;
 use App\Model\Attachment;
 use Illuminate\Notifications\Notifiable;
@@ -83,5 +84,9 @@ class User extends Authenticatable
     public function topic ()
     {
         return $this->hasMany ( Topic::class );
+    }
+    
+    public function lesson(){
+        return $this->hasMany(Lesson::class);
     }
 }

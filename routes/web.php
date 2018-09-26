@@ -18,6 +18,10 @@ Route::group(['middleware'=>[], 'namespace'=>'Home'],function(){
     Route::resource ('article','ArticleController');
     Route::get ( '/article/zan/{article}' , 'ArticleController@toggleZan' )->name ( 'article.zan' );\
     Route::resource('topic','TopicController');
+    //这个get 必须在 前面, 不然和下面的resource 里的show 参数 冲突
+    Route::get('lists','LessonController@lists')->name('lesson.lists');
+    Route::resource('lesson','LessonController');
+    Route::resource('video','VideoController');
 });
 
 /**

@@ -102,7 +102,7 @@
 </div>
 @push('js')
     <script>
-        require(['hdjs', 'vue', 'axios', 'moment'], function (hdjs, Vue, axios, moment) {
+        require(['hdjs', 'vue', 'axios', 'moment','MarkdownIt'], function (hdjs, Vue, axios, moment,MarkdownIt) {
             var vm = new Vue({
                 el: '#app',
                 data: {
@@ -138,7 +138,7 @@
                             //每次值发生变化，自动同步vue数据
                             //当编辑器值发生改变时候
                             //获取到编辑器的值设置给vm中field中content
-                            vm.$set(vm.field, 'content', this.getHTML());
+                            vm.$set(vm.field, 'content', this.getValue());
                         }
                     });
                     //发送异步请求全部评论
@@ -146,6 +146,10 @@
                     axios.get(url).then((response) => {
                         // console.log(response.data);
                         this.comments = response.data.comments;
+                        let md = new MarkdownIt();
+                        this.comments.forEach((v,k)=>{
+                            v.content = md.render(v.content);
+                        })
                     })
                 },
                 methods: {
@@ -163,9 +167,14 @@
                             //在进行评论提交
                             url = '/common/comment?model=' + this.model + '&id={{$model['id']}}';
                             axios.post(url, this.field).then((response) => {
+                                var comment =response.data.comment;
+                                let md = new MarkdownIt();
+                                comment.content = md.render(comment.content);
+//console.log(response);
+                                this.comments.push(comment);
                                 // console.log(response.data);
                                 //将数据追加到comments
-                                this.comments.push(response.data.comment);
+                                // this.comments.push(response.data.comment);
                                 // this.field.content="";
                                 editormd.setSelection({line: 0, ch: 0}, {line: 999999, ch: 9999999});
                                 editormd.replaceSelection("");
@@ -204,5 +213,8 @@
             })
         })
 
+    </script>
+    <script>
+        require(['prism'])
     </script>
 @endpush

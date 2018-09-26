@@ -105,6 +105,9 @@
                                 <a href="{{route ('admin.category.index')}}" class="nav-link">
                                     栏目管理
                                 </a>
+                                <a href="{{route ('lesson.create')}}" class="nav-link">
+                                    课程管理
+                                </a>
                             </li>
 
                         </ul>
@@ -128,7 +131,7 @@
                     <a href="#!" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
                         <div class="avatar avatar-sm avatar-online">
-                            <img src="{{asset('org/Dashkit/dist/assets')}}/img/avatars/profiles/avatar-1.jpg"
+                            <img src="{{auth()->user()->icon}}"
                                  class="avatar-img rounded-circle" alt="...">
                         </div>
                     </a>

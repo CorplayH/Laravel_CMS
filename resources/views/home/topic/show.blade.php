@@ -31,8 +31,10 @@
                 </div> <!-- / .row -->
                 <hr>
                 <div class="content mt-3">
-{{--                    {!!$fullcontent!!}--}}
-                    {!! $topic['Markdown'] !!}
+                    {{--                    {!!$fullcontent!!}--}}
+                    <div id="Markdown">
+                        {!! $topic->markdown !!}
+                    </div>
                     <hr>
 
                     @auth()
@@ -48,13 +50,13 @@
                     @endauth
 
                 </div>
-                    <div class="row">
-                @foreach($topic->zan ()->with(['user'])->get() as $zanUser)
-                    <div class="avatar mr-2">
-                        <img src="{{$zanUser->user->icon}}" alt="..." class="avatar-img rounded-circle">
-                    </div>
-                @endforeach
-                    </div>
+                <div class="row">
+                    @foreach($topic->zan ()->with(['user'])->get() as $zanUser)
+                        <div class="avatar mr-2">
+                            <img src="{{$zanUser->user->icon}}" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                    @endforeach
+                </div>
             </div>
             {{--加载模板时候，将mode传递过去--}}
             @include('layout.common.comment',['model'=>$topic])
@@ -88,3 +90,8 @@
     </div>
 
 @endsection
+@push('js')
+    <script>
+        require(['prism'])
+    </script>
+@endpush
