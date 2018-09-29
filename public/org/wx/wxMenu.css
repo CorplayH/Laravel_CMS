@@ -1,0 +1,35 @@
+.phone {
+  margin: 0px;
+  padding: 0px;
+  height: 500px;
+  border: 1px solid red;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.phone .phoneContainer {
+  display: flex;
+  padding: 0px 10px;
+}
+.phone .phoneContainer .menu {
+  display: flex;
+  flex: 1;
+  flex-direction: column-reverse;
+}
+.phone .phoneContainer h5 {
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #cccccc;
+  padding: 8px;
+}
+.phone .phoneContainer dd {
+  text-align: center;
+  margin: 0;
+}
+.phone .phoneContainer dd dl {
+  border: 1px solid #cccccc;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+/*# sourceMappingURL=wxMenu.css.map */

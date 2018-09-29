@@ -5,12 +5,14 @@ namespace App\Model;
 use App\Model\Traits\common;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Article extends Model
 {
     use common;
     use LogsActivity;
+    use Searchable;
     //设置记录动态的属性
     protected static $logFillable = true;
     //记录事件

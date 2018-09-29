@@ -14,6 +14,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit/dist/assets')}}/css/theme.min.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    @yield('head')
     <title>{{cms_config('site.title')}}</title>
 </head>
 <body>

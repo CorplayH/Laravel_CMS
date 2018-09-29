@@ -59,11 +59,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false"
+                    <a class="nav-link" href="#config" data-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="sidebarPages">
                         <i class="fe fe-file"></i> 网站配置
                     </a>
-                    <div class="collapse " id="sidebarPages">
+                    <div class="collapse " id="config">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{route ('admin.config.edit',['name'=>'site'])}}" class="nav-link" role="button" aria-expanded="false"
@@ -96,10 +96,31 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#sidebarLayouts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                    <a class="nav-link" href="#wechat" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                        <i class="fe fe-code"></i> 微信公众号管理
+                    </a>
+                    <div class="collapse " id="wechat">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route ('admin.config.edit',['name'=>'wechat'])}}" class="nav-link" >
+                                    微信配置
+                                </a>
+                                <a href="{{route ('wechat.baseResponse.create')}}" class="nav-link">
+                                    基本回复
+                                </a>
+                                <a href="{{route ('wechat.wxMenu.index')}}" class="nav-link">
+                                    底部菜单
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#houtai" data-toggle="collapse" role="button" aria-expanded="false">
                         <i class="fe fe-layout"></i> 后台管理
                     </a>
-                    <div class="collapse " id="sidebarLayouts">
+                    <div class="collapse " id="houtai">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{route ('admin.category.index')}}" class="nav-link">

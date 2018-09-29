@@ -16,7 +16,8 @@
         <div class="navbar-user">
 
         <!-- Dropdown -->
-            @include('layout.notify')
+        @include('layout.home.search')
+        @include('layout.notify')
             @include('layout.publish')
         <!-- Dropdown -->
             @include('layout.login_register')

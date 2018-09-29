@@ -6,6 +6,15 @@ Route::group (['namespace'=>'Util'],function (){
     Route::any('upload/lists', 'UploadController@lists')->name ('upload.lists');
 });
 
+
+//微信
+Route::group (['prefix'=>'wechat','as'=>'wechat.','namespace'=>'Wechat'],function (){
+    Route::any ('api/handler','ApiController@handler')->name ('api.handler');
+    Route::resource ('baseResponse','BaseResponseController');
+    Route::resource('wxMenu','WxMenuController');
+    Route::get('wxMenu/push/{wxMenu}','WxMenuController@push')->name('wxMenu.push');
+});
+
 /**
  * 前台路由
  */
@@ -22,6 +31,8 @@ Route::group(['middleware'=>[], 'namespace'=>'Home'],function(){
     Route::get('lists','LessonController@lists')->name('lesson.lists');
     Route::resource('lesson','LessonController');
     Route::resource('video','VideoController');
+    //搜索
+    Route::get('/search','SearchController@lists')->name('search');
 });
 
 /**

@@ -25,6 +25,10 @@ function cms_config($name){
 //        从缓存中存取数据
         $cache = Cache::get('cms_config');
     }
+    if(count ($info) == 1)
+    {
+        return $cache[$info[0]]??'';
+    }
 //    dd($cache->toArray());die;
 //    dd($cache[$info[0]][$info[1]]);die;
     return $cache[$info[0]][$info[1]]??'';
