@@ -13,6 +13,8 @@ Route::group (['prefix'=>'wechat','as'=>'wechat.','namespace'=>'Wechat'],functio
     Route::resource ('baseResponse','BaseResponseController');
     Route::resource('wxMenu','WxMenuController');
     Route::get('wxMenu/push/{wxMenu}','WxMenuController@push')->name('wxMenu.push');
+    Route::resource('keywordReply','KeywordReplyController');
+    Route::resource('news','WxNewsController');
 });
 
 /**

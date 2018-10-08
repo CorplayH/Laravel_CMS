@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Wechat;
 
 use App\Model\BaseResponse;
+use App\Model\WxKeyword;
+use App\Model\WxKeywordReply;
+use App\Server\WechatServer;
 use Houdunwang\WeChat\WeChat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,14 +13,8 @@ use App\Http\Controllers\Controller;
 class ApiController extends Controller
 {
     //
-    public function __construct () {
-        //获取wechat配置项全部数据，注意修改了hd_config函数
-        $config = cms_config ('wechat');
-        //配置参数
-        WeChat::config($config);
-        //与微信服务器进行通信验证
-        WeChat::valid();
-        //file_put_contents ('b.php',1);
+    public function __construct (WechatServer $wechatServer) {
+        $wechatServer->config();
     }
     
     public function handler(){
@@ -33,6 +30,33 @@ class ApiController extends Controller
             //向用户回复消息
             return $instance->text($reply['welcome']);
         }
+    
+        //首先判断是否为文本消息,如果是,获取用户发送到文字内容,判断是否有匹配的关键词
+        if ($instance->isTextMsg()){
+            //获取用户发来的消息
+            $message = $instance->getMessage();
+            //拿用户发来的消息去关键词表找,看是否能找到
+            $keyword = WxKeyword::where('keyword',$message->Content)->first();
+            if ($keyword){
+                //如果有匹配的关键词,用找到的关键词数据中的规则id,去回复内容表中找到对应规则id的回复内容,只取出data的值
+                $reply = WxKeywordReply::where('wx_rule_id',$keyword['wx_rule_id'])->first();
+                //将后去到的回复内容数据转成php的数组,然后随机取中间的一条数据中的content回复给用户
+                //判断用户发来的消息所对应的回复内容是哪个类型,如果是base类型,回复文字,如果是news类,回复图文
+                if ($reply['type'] == 'base'){
+                    $huifu = array_random(json_decode($reply['data'],true));
+                    return $instance->text($huifu['content']);
+                }else if($reply['type'] == 'news'){
+                    $news = json_decode($reply['data'],true);
+                    return $instance->news($news);
+                }
+            
+            }
+        }
+        
+        
+        
+        
+        
         return $instance->text($reply['default']);
         
     }

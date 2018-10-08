@@ -111,6 +111,12 @@
                                 <a href="{{route ('wechat.wxMenu.index')}}" class="nav-link">
                                     底部菜单
                                 </a>
+                                <a href="{{route ('wechat.keywordReply.index')}}" class="nav-link">
+                                    关键词回复
+                                </a>
+                                <a href="{{route ('wechat.news.index')}}" class="nav-link">
+                                    图文回复
+                                </a>
                             </li>
 
                         </ul>

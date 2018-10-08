@@ -1,0 +1,59 @@
+.news{
+    width: 300px;
+}
+.news div.first{
+    border:solid 1px #ccc;
+    position: relative;
+}
+.news div.first img{
+    width: 100%;
+    height: 180px;
+}
+.news div.first p{
+    background: #333;
+    color:white;
+    padding: 5px 10px;
+    margin-bottom: 0;
+}
+.news div.first .edit{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ddd;
+    text-align: center;
+    padding: 5px 0;
+}
+.news div.first:hover .edit{
+    display: block;
+}
+.news div.item{
+    overflow: hidden;
+    height: auto;
+    padding: 10px;
+    border:solid 1px #ccc;
+    position: relative;
+}
+.news div.item img{
+    width: 60px;
+    height: 60px;
+    float: right;
+}
+.news div.item p{
+    float: left;
+    padding: 5px 10px;
+}
+.news div.item .edit{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ddd;
+    text-align: center;
+    padding: 5px 0;
+}
+.news div.item:hover .edit{
+    display: block;
+}

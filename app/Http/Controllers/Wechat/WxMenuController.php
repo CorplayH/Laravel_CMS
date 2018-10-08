@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wechat;
 
 use App\Model\WxMenu;
+use App\Server\WechatServer;
 use Houdunwang\WeChat\WeChat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -104,14 +105,9 @@ class WxMenuController extends Controller
         return back()->with('success','删除成功');
     }
     
-    public function push(WxMenu $wxMenu)
+    public function push(WxMenu $wxMenu, WechatServer $wechatServer)
     {
-        //
-        $config = cms_config ('wechat');
-        //配置参数
-        WeChat::config($config);
-        //与微信服务器进行通信验证
-        WeChat::valid();
+        $wechatServer->config();
         $res = WeChat::instance('button')->create($wxMenu['data']);
 //        dd($res);
         if($res['errcode'] == 0 ){
