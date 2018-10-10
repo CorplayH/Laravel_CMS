@@ -15,7 +15,6 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        //
         $db = Activity::orderBy('id','desc');
         if($request->query('t') == 'follower'){
             $db->whereIn('causer_id',auth ()->user ()->follower->pluck('id'));

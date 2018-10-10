@@ -92,6 +92,31 @@
                                     上传配置
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route ('admin.edit_template')}}" class="nav-link" >
+                                    模版配置
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#role" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                        <i class="fe fe-code"></i> 权限管理
+                    </a>
+                    <div class="collapse " id="role">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route ('role.role.index')}}" class="nav-link" >
+                                    角色管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('role.permission.index')}}" class="nav-link" >
+                                    权限列表
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </li>
@@ -134,6 +159,24 @@
                                 </a>
                                 <a href="{{route ('lesson.create')}}" class="nav-link">
                                     课程管理
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#news" data-toggle="collapse" role="button" aria-expanded="false">
+                        <i class="fe fe-layout"></i> 文章/新闻 管理
+                    </a>
+                    <div class="collapse " id="news">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route ('news.customMenu.index')}}" class="nav-link">
+                                    文章分类
+                                </a>
+                                <a href="{{route ('news.news.index')}}" class="nav-link">
+                                    文章列表
                                 </a>
                             </li>
 

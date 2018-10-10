@@ -19,11 +19,12 @@ function hd_randomCode($len = 4){
 function cms_config($name){
     static $cache =[];
     $info = explode('.',$name);
-//    dd($info);
     if(!$cache){
 //        $cache[$info[0]] = \App\Model\Config::where('name',$info[0])->value('value');
 //        从缓存中存取数据
-        $cache = Cache::get('cms_config');
+         $cache = Cache::get('cms_config',function (){
+             return \App\Model\Config::pluck('value','name');
+         });
     }
     if(count ($info) == 1)
     {

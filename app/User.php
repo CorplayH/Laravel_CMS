@@ -8,12 +8,15 @@ use App\Model\Topic;
 use App\Model\Attachment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable{
         notify as protected systemNotify;
     }
+    use HasRoles;
+    
     public function notify ( $instance )
     {
         //文章作者id不等于登入用户

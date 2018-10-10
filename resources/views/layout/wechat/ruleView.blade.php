@@ -1,4 +1,4 @@
-<div class="card" id="rule">
+<div class="card" id="rule" v-cloak="">
     <div class="card-header">
         添加规则
     </div>

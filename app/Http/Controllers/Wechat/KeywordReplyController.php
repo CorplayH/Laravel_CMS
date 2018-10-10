@@ -19,7 +19,6 @@ class KeywordReplyController extends Controller
      */
     public function index()
     {
-        //
         //获取回复内容表中的类型等于base的文字回复数据
         $data = WxKeywordReply::where('type','base')->get();
         return view('wechat.keywordReply.index',compact('data'));
@@ -101,7 +100,6 @@ class KeywordReplyController extends Controller
      */
     public function update(Request $request, WechatServer $wechatServer)
     {
-        //
         //首先需要编辑规则和关键词数据
         $rule = $wechatServer->saveRule(json_decode($request->rule,true));
         //编辑回复内容数据

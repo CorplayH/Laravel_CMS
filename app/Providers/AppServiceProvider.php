@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Model\Config;
 use App\Observers\ConfigObserver;
+use App\Server\TagServer;
 use Houdunwang\Aliyun\Aliyun;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(TagServer $tagServer)
     {
         //
         Schema::defaultStringLength(191);
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
 //      Config数据库 observe监测数据库改变 (使用ConfigObserver里的方法来监测)
         Config::observe(ConfigObserver::class);
         \Carbon\Carbon::setLocale('zh');
+        $tagServer->make();
     }
     protected function loadConfig(){
         Aliyun::config([

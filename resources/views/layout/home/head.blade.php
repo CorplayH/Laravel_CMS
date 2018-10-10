@@ -59,6 +59,11 @@
                         视频课程
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('news.index')}}">
+                        新闻博客
+                    </a>
+                </li>
             </ul>
 
         </div>

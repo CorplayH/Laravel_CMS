@@ -16,7 +16,6 @@ class WxNewsController extends Controller
      */
     public function index()
     {
-        //
         //获取回复内容表中的类型等于news的数据
         $data = WxKeywordReply::where('type', 'news')->get();
     

@@ -34,7 +34,6 @@ class WxMenuController extends Controller
     public function create()
     {
         //
-        
         return view('wechat.wxMenu.create');
     }
 
