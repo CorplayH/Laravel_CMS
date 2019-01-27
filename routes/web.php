@@ -47,16 +47,19 @@ Route::group (['middleware'=>['auth.admin'],'prefix'=>'admin','as'=>'admin.','na
     Route::resource('category','CategoryController');
     Route::get('template', 'ConfigController@edit_template')->name('edit_template');
     Route::get('set_template/{name}','ConfigController@set_template')->name('set_template');
+    //后台用户列表
+    Route::get('adminUser','UserController@index')->name('userIndex');
+    Route::get('adminUser/create','UserController@create')->name('userCreate');
+    Route::get('adminUser/assignRole/{admin}','UserController@assignRole')->name('assignRole');
+    Route::post('adminUser/storeRole/{admin}','UserController@storeRole')->name('storeRole');
 });
-
 //新闻博客
 Route::group(['middleware' => [],'prefix' => 'news', 'as' => 'news.', 'namespace'=>'News'],function (){
     Route::resource('customMenu','CustomMenuController');
     Route::resource('news','NewsController');
-    Route::get('index','HomeController@index')->name('index');
+    Route::get('index','HomeController@index')->name('newsIndex');
 
 });
-
 //会员中心
 Route::group ( [ 'middleware' => ['auth'] , 'prefix' => 'member' , 'as' => 'member.' , 'namespace' => 'Member' ] , function () {
     Route::get ( '/' , 'UserController@index' )->name ( 'index' );
@@ -67,17 +70,18 @@ Route::group ( [ 'middleware' => ['auth'] , 'prefix' => 'member' , 'as' => 'memb
     Route::get ('/user/getFollower/{user}','UserController@getFollower')->name ('user.getFollower');
     
 } );
-
-
 //公共类
 Route::group (['middleware'=>[],'prefix'=>'common','as'=>'common.','namespace'=>'Common'],function (){
     Route::resource ('comment','CommentController');
     Route::get('/favorite/make','FavoriteController@make')->name('favorite.make');
     Route::get('/zan/make','ZanController@make')->name('zan.make');
 });
-
 //RBAC的角色路由
 Route::group(['middleware'=>[],'prefix'=>'role','as'=>'role.','namespace'=>'Role'],function(){
+    //创建角色
     Route::resource('role','RoleController');
+    //显示所有权限
     Route::get('permission','PermissionController@index')->name('permission.index');
+    Route::get('assignPermission/{role}','PermissionController@assignPermission')->name('assignPermission');
+    Route::post('savePermission/{role}','PermissionController@savePermission')->name('savePermission');
 });

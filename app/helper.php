@@ -46,3 +46,10 @@ function cms_model(){
     //dd($class);
     return $id? $class::find($id) : new $class;
 }
+
+function access($permission){
+    $res =auth()->user()->can($permission);
+    if(!$res){
+        throw new \App\Exceptions\PermissionException('你没有权限还敢来?快走吧!!!王朝马汉在哪里');
+    }
+}

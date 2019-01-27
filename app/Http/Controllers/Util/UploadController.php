@@ -12,13 +12,6 @@ class UploadController extends Controller
     //上传
     public function upload ( Request $request , UploadServer $uploadServer,Attachment $attachment )
     {
-        //测试
-        //dd(1);
-        //打印可以看到上传文件信息
-        //dd($_FILES);
-        //方法('打印$_FILES看到下标')
-        //dd($request->file('file'));
-        //$request->file('file')   $request->file
         if ( $file = $request->file ( 'file' ) ) {
             //获取上传文件扩展名
             //调用UploadServer@upload方法完成上传

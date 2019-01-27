@@ -44,9 +44,9 @@ class RegisterNotify extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage())
+        return (new MailMessage)
             ->subject('Corplay小屋的注册码')//主题
-            ->line('尊敬的用户您好，验证码为：'.$this->code.'，使用此通过令牌~~，May the force be with you ！');
+            ->line('尊敬的用户您好，验证码为：'.$this->code.'，使用此令牌~~，May the force be with you ！');
     }
     
     /**

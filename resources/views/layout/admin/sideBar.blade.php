@@ -58,10 +58,11 @@
                         <i class="fe fe-home"></i> Dashboard
                     </a>
                 </li>
+                @can('Admin-config')
                 <li class="nav-item">
                     <a class="nav-link" href="#config" data-toggle="collapse" role="button" aria-expanded="false"
                        aria-controls="sidebarPages">
-                        <i class="fe fe-file"></i> 网站配置
+                        <i class="fe fe-settings"></i> 网站配置
                     </a>
                     <div class="collapse " id="config">
                         <ul class="nav nav-sm flex-column">
@@ -100,9 +101,26 @@
                         </ul>
                     </div>
                 </li>
+                @endcan
+                <li class="nav-item">
+                    <a class="nav-link" href="#userPages" data-toggle="collapse" role="button" aria-expanded="false"
+                       aria-controls="sidebarPages">
+                        <i class="fe fe-user"></i> 后台用户管理
+                    </a>
+                    <div class="collapse " id="userPages">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route ('admin.userIndex')}}" class="nav-link">
+                                    用户列表
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#role" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="fe fe-code"></i> 权限管理
+                        <i class="fe fe-alert-octagon"></i> 权限管理
                     </a>
                     <div class="collapse " id="role">
                         <ul class="nav nav-sm flex-column">
@@ -122,7 +140,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#wechat" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="fe fe-code"></i> 微信公众号管理
+                        <i class="fe fe-file"></i> 微信公众号管理
                     </a>
                     <div class="collapse " id="wechat">
                         <ul class="nav nav-sm flex-column">
@@ -167,7 +185,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#news" data-toggle="collapse" role="button" aria-expanded="false">
-                        <i class="fe fe-layout"></i> 文章/新闻 管理
+                        <i class="fe fe-edit"></i> 文章/新闻 管理
                     </a>
                     <div class="collapse " id="news">
                         <ul class="nav nav-sm flex-column">

@@ -13,6 +13,7 @@ class ConfigController extends Controller
     //
     public function edit($name)
     {
+        access('Admin-config');
         //        dd($name);
         //$data = Config::where('name',$name)->first();
         $data = Config::firstOrNew(['name' => $name]);
@@ -23,6 +24,7 @@ class ConfigController extends Controller
     
     public function store($name, Request $request)
     {
+        access('Admin-config');
         //dd($name);
         //dd($request->all ());
         Config::updateOrCreate(
@@ -39,6 +41,7 @@ class ConfigController extends Controller
     
     public function edit_template(TemplateServer $templateServer)
     {
+        access('Admin-config');
         //获取当前项目中的所有前台新闻站可用模板数据,分配到模板循环,供选择使用
         $configs = $templateServer->config();
 //        dd($configs);
@@ -47,6 +50,7 @@ class ConfigController extends Controller
     }
     
     public function set_template($name){
+        access('Admin-config');
         //使用修改env文件的方法,修改默认模板的值
         hd_edit_env(['HD_TEMPLATE' => $name]);
         //提示信息并返回

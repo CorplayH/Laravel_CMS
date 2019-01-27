@@ -50,7 +50,7 @@ class NewsController extends Controller
             'title.required' => '标题为必填',
         ])->validate();
         News::create($request->all());
-        return redirect()->route('admin.news.index')->with('success','发布成功');
+        return redirect()->route('news.news.index')->with('success','发布成功');
     }
 
     /**

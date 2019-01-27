@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('news.index')}}">
+                    <a class="nav-link" href="{{route('news.newsIndex')}}">
                         新闻博客
                     </a>
                 </li>

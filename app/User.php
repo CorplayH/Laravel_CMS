@@ -9,8 +9,11 @@ use App\Model\Attachment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Contracts\Notifications\Dispatcher;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable{
         notify as protected systemNotify;
@@ -19,6 +22,7 @@ class User extends Authenticatable
     
     public function notify ( $instance )
     {
+        app(Dispatcher::class)->send($this, $instance);
         //文章作者id不等于登入用户
         if ( $this->id != auth ()->id () ) {
             $this->systemNotify ( $instance );
@@ -91,5 +95,23 @@ class User extends Authenticatable
     
     public function lesson(){
         return $this->hasMany(Lesson::class);
+    }
+    /**
+     * 获取将存储在JWT主题声明中的标识符.
+     * 就是⽤用户表主键 id *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    
+    /**
+     * 返回⼀一个键值数组，其中包含要添加到JWT的任何⾃自定义声明. *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
